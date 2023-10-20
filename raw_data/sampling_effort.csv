@@ -1,0 +1,78 @@
+Date,Site,AM weather,PM weather,Day’s color,Plot 1 start AM,Plot 2 start AM,Plot 3 start AM,Plot 4 start AM,Plot 5 start AM,Plot 6 start AM,Plot 1 start PM,Plot 2 start PM,Plot 3 start PM,Plot 4 start PM,Plot 5 start PM,Plot 6 start PM,Notes
+06/06/19,Snodgrass Lower,"clear, calm, warm","clear, calm, warmer",white,10:16:00,10:46:00,11:08:00,11:30:00,12:35:00,12:06:00,13:35:00,14:16:00,13:54:00,14:34:00,15:25:00,15:05:00,
+06/07/19,Kettle Ponds,"partly cloudy, passing rain, warm otherwise","overcast, cool",white,12:43:00,12:23:00,11:04:00,10:13:00,10:44:00,11:54:00,,,,,,,"Rain in the morning, but a sunny break in the middle of the day. Rainy again after midday, didn’t sample."
+06/08/19,Snodgrass Lower,"clear, calm, warm","clear, calm, warm",white,11:46:00,11:19:00,12:10:00,10:22:00,10:48:00,12:30:00,13:41:00,14:05:00,14:19:00,15:01:00,14:49:00,14:35:00,
+06/10/19,Kettle Ponds,"clear, calm, warm",NA,white,,,,,,10:24:00,,,,,,,"Decided to end early because my car was messed up, and I abandoned the site"
+06/11/19,Snodgrass Lower,"clear, warm, slightly breezy","clear, warm, a bit more breezy",white,11:02:00,11:49:00,11:26:00,12:50:00,12:18:00,10:38:00,15:30:00,15:46:00,15:00:00,14:19:00,14:05:00,14:40:00,
+06/12/19,401 Trail,"clear, calm, warm","clear, calm, warm",white,12:19:00,12:39:00,13:00:00,13:12:00,13:45:00,14:16:00,,,,,,,"I was setting up the site, so only did one round of sampling"
+06/13/19,Bellview Lower,"clear, calm, warm","clear, calm, warm",white,,,,,,,12:14:00,12:32:00,12:50:00,13:11:00,13:29:00,13:46:00,"I was setting up the site, so only did one round of sampling"
+06/14/19,401 Trail,"clear, calm, warm","partly cloudy, warm, calm",white,11:46:00,12:53:00,11:28:00,10:53:00,11:11:00,12:30:00,14:38:00,13:46:00,14:09:00,14:23:00,13:58:00,14:51:00,
+06/17/19,Bellview Lower,"mostly cloudy, cool, calm","rainy, cold, windy",white,,10:27:00,,,,,,,,,,,"This was a very cold, rainy day. I sampled in a brief window when it was sunny and warm. Stopped right before rain came."
+06/19/19,401 Trail,"mostly clear, warm, calm","mostly clear, warm, calm",white,11:13:00,11:32:00,10:56:00,10:28:00,10:43:00,11:50:00,13:49:00,14:13:00,13:28:00,12:54:00,13:12:00,14:30:00,
+06/20/19,Bellview Lower,"calm, clear, warm",NA,white,,,,,,,,,,,,,
+06/21/19,401 Trail,"partly cloudy, warm, calm","partly cloudy, warm, calm",white,11:56:00,11:20:00,11:38:00,10:52:00,10:31:00,12:11:00,14:11:00,13:36:00,13:16:00,14:36:00,15:07:00,13:51:00,
+06/24/19,Waterfall,"cool, clear, calm","warm, clear, calm",white,10:51:00,12:59:00,11:18:00,11:41:00,12:21:00,12:43:00,13:40:00,14:54:00,13:59:00,14:22:00,15:14:00,15:33:00,*
+06/25/19,401 Trail,"warm, clear, calm","mostly cloudy, warm calm",white,11:31:00,10:43:00,11:53:00,10:24:00,11:01:00,12:18:00,13:45:00,13:19:00,14:02:00,15:23:00,15:09:00,14:40:00,
+06/26/19,Waterfall,"mostly clear, warm, calm","clear, warm, slightly breezy",white,09:57:00,10:19:00,11:36:00,11:07:00,11:34:00,11:01:00,14:17:00,14:18:00,15:08:00,14:35:00,14:49:00,14:37:00,*
+06/27/19,401 Trail,"calm, warm, clear","calm, warm, clear",white,12:40:00,10:54:00,11:34:00,11:14:00,11:54:00,12:16:00,14:56:00,16:01:00,15:29:00,13:42:00,14:33:00,13:58:00,
+06/28/19,Waterfall,"calm, warm, clear","partly cloudy, warm, calm",white,10:23:00,10:50:00,11:42:00,12:11:00,12:37:00,11:10:00,13:54:00,14:22:00,15:04:00,15:23:00,15:59:00,14:38:00,
+07/01/19,401 Trail,"partly cloudy, warm, calm","partly cloudy, warm, calm",white,10:19:00,09:58:00,10:38:00,11:30:00,11:02:00,11:49:00,12:52:00,13:22:00,13:50:00,15:13:00,14:45:00,14:27:00,
+07/02/19,Bean,NA,"partly cloudy, warm, calm",white,12:18:00,11:30:00,11:08:00,11:19:00,11:38:00,11:57:00,,,,,,,
+07/02/19,Waterfall,NA,"partly cloudy, warm, calm",white,,,,,,,13:32:00,14:10:00,14:40:00,15:15:00,14:13:00,13:29:00,
+07/03/19,401 Trail,"clear, calm, warm","clear, calm, warm",white,10:38:00,11:37:00,11:17:00,12:00:00,10:57:00,12:23:00,15:07:00,13:35:00,13:59:00,14:17:00,14:46:00,15:34:00,
+07/05/19,Waterfall,"clear, calm, warm","clear, calm, warm",white,12:29:00,10:41:00,10:14:00,12:01:00,11:20:00,12:47:00,14:01:00,15:15:00,15:34:00,14:39:00,14:55:00,14:21:00,
+07/05/19,Bean,"clear, calm, warm","partly cloudy, warm, breezy",white,11:50:00,10:30:00,11:03:00,11:25:00,10:05:00,12:16:00,14:25:00,15:57:00,15:01:00,15:27:00,16:21:00,13:51:00,Plot 2 recently melted out -AF
+07/06/19,401 Trail,"clear, calm, warm","partly cloudy, warm, calm",white,09:35:00,10:12:00,09:51:00,11:11:00,10:35:00,11:37:00,12:42:00,13:47:00,13:30:00,14:48:00,14:15:00,13:01:00,
+07/09/19,Bean,"clear, calmish, lukewarm","clear, breezy, lukewarm",red,11:34:00,12:31:00,12:00:00,10:54:00,12:49:00,10:34:00,15:32:00,16:23:00,16:06:00,15:09:00,14:40:00,14:16:00,
+07/09/19,Waterfall,"calm, clear, warm","calm,clear, warm",red,11:00:00,11:46:00,12:17:00,11:27:00,10:34:00,12:43:00,16:02:00,15:27:00,14:49:00,16:24:00,14:01:00,14:27:00,
+07/10/19,401 Trail,"calm, clear, warm","calm,clear, warm",red,11:00:00,10:39:00,12:10:00,10:12:00,11:30:00,12:34:00,13:27:00,13:53:00,14:55:00,14:14:00,15:21:00,14:35:00,
+07/11/19,Bean,"warm, breezy, clear","warm, breezy, partly cloud",red,12:40:00,11:42:00,12:15:00,11:23:00,10:30:00,10:58:00,14:35:00,14:13:00,13:46:00,14:57:00,,15:20:00,"Symposium, so didn’t do plot 5 in PM"
+07/11/19,Waterfall,"calm, clear, warm","calm, partly cloudy, warm",red,10:45:00,10:24:00,11:54:00,11:09:00,11:33:00,12:14:00,14:17:00,13:32:00,15:20:00,14:35:00,15:00:00,13:46:00,
+07/12/19,401 Trail,"calm, warm, partly cloudy","calm, warm, partly cloudy",red,11:57:00,11:13:00,10:14:00,11:35:00,12:23:00,10:45:00,14:31:00,14:50:00,13:49:00,14:31:00,13:49:00,14:01:00,
+07/15/19,Waterfall,"calm, partly cloudy, warm","calm, partly cloudy, warm",red,10:25:00,12:08:00,10:01:00,12:31:00,11:44:00,11:05:00,15:58:00,14:43:00,15:36:00,14:23:00,15:12:00,13:42:00,
+07/15/19,Bean,"partly cloudy, passing rain, warm otherwise","partly cloudy, warm, breezy",red,10:15:00,12:04:00,10:42:00,11:41:00,11:07:00,12:27:00,15:08:00,14:15:00,14:48:00,13:50:00,15:50:00,15:27:00,
+07/16/19,401 Trail,"calm, clear, warm","calm, clear, warm",red,09:52:00,11:10:00,11:52:00,11:31:00,10:28:00,10:57:00,14:51:00,14:30:00,15:09:00,15:40:00,15:58:00,16:28:00,
+07/17/19,Bean,"mostly clear, warm, breezy","partly cloudy, warm, breezy",red,10:40:00,12:05:00,11:15:00,11:45:00,12:25:00,12:48:00,15:50:00,14:47:00,15:29:00,15:05:00,14:25:00,13:50:00,
+07/17/19,Waterfall,"calm, clear, warm","breeze at times, clear, warm",red,12:56:00,10:56:00,11:30:00,12:33:00,10:28:00,11:58:00,14:40:00,15:52:00,15:28:00,15:03:00,13:47:00,14:08:00,
+07/18/19,401 Trail,"calm, clear, warm","calm, partly cloudy, warm",red,11:50:00,12:19:00,11:27:00,11:00:00,10:41:00,12:47:00,15:25:00,14:08:00,15:57:00,15:00:00,14:37:00,13:43:00,
+07/19/19,Waterfall,"calm, clear, warm","calm,clear, warm",red,09:57:00,11:48:00,11:29:00,12:13:00,11:06:00,10:34:00,12:56:00,13:25:00,13:54:00,15:16:00,14:17:00,14:50:00,"I forgot to bring new vials, so didn’t collect much today -MS"
+07/21/19,401 Trail,"calm, clear, warm","calm, clear, warm",red,10:45:00,12:04:00,11:24:00,11:44:00,09:45:00,10:17:00,,,,,,,
+07/22/19,Waterfall,"calm, clear, warm",NA,red,10:32:00,09:53:00,11:27:00,12:36:00,11:03:00,12:00:00,,,,,,,
+07/22/19,Bean,"clear, breezy, warm",NA,red,10:10:00,11:43:00,12:13:00,10:32:00,11:23:00,11:00:00,,,,,,,
+07/23/19,401 Trail,"calm, clear, warm","calm, partly cloudy, warm",red,09:37:00,09:56:00,10:19:00,10:40:00,11:01:00,11:19:00,15:04:00,14:35:00,13:35:00,13:02:00,14:05:00,12:31:00,
+07/24/19,Bean,"mostly clear, warm, breezy",,red,09:32:00,10:05:00,11:06:00,11:50:00,10:29:00,12:42:00,,,,,,,
+07/24/19,Waterfall,"partly cloudy, calm, warm",,red,12:40:00,09:58:00,12:07:00,09:24:00,10:36:00,11:28:00,,,,,,,"Doctor’s appt. in afternoon, did a half-day – MS"
+07/25/19,401 Trail,"calm, cloudy, cool",NA,red,,10:47:00,,,11:16:00,,,,,,,,It’s cloudy and cool – no bees out. Leaving early -MS
+07/28/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, warm, breezy",red,11:32:00,12:40:00,11:53:00,11:08:00,10:41:00,12:15:00,14:13:00,13:50:00,15:23:00,16:17:00,15:50:00,14:49:00,"Plot 6 is next to air temp hobo, pointing toward 403, forgot to get coordinates -MS"
+07/29/19,Bean,"clear, breezy, warm","partly cloudy, warm, breezy",red,10:14:00,12:17:00,10:46:00,11:15:00,09:45:00,11:46:00,15:55:00,13:57:00,15:32:00,14:56:00,13:30:00,14:23:00,
+07/29/19,Waterfall,"calm, clear, warm","calm, partly cloudy, warm",red,11:01:00,10:13:00,10:40:00,11:53:00,09:43:00,11:34:00,15:13:00,14:24:00,14:42:00,13:12:00,13:39:00,14:07:00,Weather was “extrapolated” from BEAN -Data entry master Aidan
+07/30/19,401 Trail,"calm, partly cloudy, warm","calm, partly cloudy, warm (cold and cloudy after 15:30)",red,11:17:00,11:38:00,12:23:00,10:58:00,10:35:00,12:01:00,15:26:00,,13:59:00,15:00:00,13:23:00,14:22:00,Didn’t sample plot 2 b/c thunder – MS
+07/31/19,Bean,"clear, breezy, warm",NA,red,11:46:00,12:23:00,10:40:00,10:11:00,,11:14:00,,,,,,,Rain at 12:30 – didn’t sample last plots -MS
+07/31/19,Waterfall,"calm, partly cloudy, warm",NA,red,,,11:23:00,10:40:00,10:13:00,11:53:00,,,,,,,Rain at 12:30 – didn’t sample last plots -MS
+08/02/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, calm, warm",red,09:49:00,11:56:00,11:41:00,10:18:00,10:48:00,11:11:00,12:53:00,13:56:00,13:52:00,12:45:00,12:25:00,13:10:00,Aidan/Michael power dual synergy team
+08/03/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",red,11:01:00,10:39:00,12:43:00,12:15:00,11:24:00,11:45:00,,,,14:03:00,,13:36:00,storm at 14:15
+08/05/19,401 Trail,"clear, breezy, warm","partly cloudy, calm, warm",blue,10:45:00,11:46:00,11:04:00,12:03:00,12:18:00,11:23:00,13:56:00,14:28:00,13:48:00,14:41:00,14:52:00,14:09:00,
+08/06/19,Waterfall,"calm, clear, warm","partly cloudy, calm, warm",blue,11:57:00,11:32:00,10:17:00,10:37:00,09:58:00,11:04:00,13:59:00,13:39:00,13:18:00,12:57:00,15:03:00,14:24:00,
+08/07/19,401 Trail,"overcast, warm, calm","mostly cloudy, warm, calm",blue,10:28:00,11:58:00,11:35:00,10:51:00,12:16:00,11:14:00,13:15:00,14:21:00,14:05:00,13:13:00,13:54:00,13:38:00,
+08/08/19,Waterfall,NA,"partly cloudy, calm, warm",blue,,,,,,,13:21:00,12:54:00,14:38:00,13:44:00,14:04:00,15:29:00,didn’t sample in morning because seeing J. Forrest’s Hoplitis site
+08/09/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,11:53:00,10:45:00,10:28:00,11:27:00,12:14:00,11:12:00,14:20:00,13:15:00,13:09:00,13:51:00,14:26:00,13:44:00,
+08/12/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,10:34:00,10:14:00,11:48:00,11:22:00,12:54:00,12:09:00,13:36:00,14:27:00,15:18:00,14:47:00,16:18:00,15:35:00,
+08/13/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,11:00:00,11:25:00,11:46:00,12:01:00,10:35:00,10:08:00,13:45:00,13:39:00,14:18:00,14:17:00,13:10:00,13:07:00,
+08/14/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,10:24:00,12:30:00,11:13:00,10:48:00,12:07:00,11:38:00,15:35:00,16:08:00,14:46:00,15:17:00,14:03:00,13:31:00,
+08/15/19,401 Trail,"calm, clear, warm","partly cloudy, calm, warm",blue,14:39:00,11:44:00,11:04:00,14:06:00,13:26:00,12:23:00,,,,,,,half day
+08/16/19,Waterfall,"partly cloudy, calm, warm",,blue,10:29:00,12:04:00,13:21:00,11:31:00,10:54:00,12:40:00,,,,,,,very windy at 13:00
+08/19/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,10:48:00,11:13:00,12:38:00,13:02:00,11:40:00,12:04:00,17:07:00,16:20:00,14:40:00,14:14:00,15:55:00,15:09:00,
+08/20/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",blue,12:31:00,10:15:00,10:40:00,12:09:00,11:41:00,11:03:00,15:14:00,15:41:00,15:58:00,14:49:00,13:50:00,14:20:00,
+08/21/19,401 Trail,"partly cloudy, calm, warm","mostly overcast, calm, warm",blue,12:42:00,10:35:00,11:51:00,12:14:00,11:02:00,11:26:00,14:18:00,16:40:00,14:49:00,13:51:00,15:57:00,15:35:00,
+08/22/19,Waterfall,"partly cloudy, calm, warm","mostly cloudy, calm, warm",yellow,12:23:00,12:50:00,12:04:00,10:58:00,11:34:00,10:30:00,13:58:00,16:10:00,14:16:00,14:50:00,15:25:00,15:46:00,Kind of cold after 15:30
+08/23/19,401 Trail,"partly cloudy, calm, warm",,yellow,,,11:39:00,,11:07:00,,,,,,,,
+08/25/19,Waterfall,"partly cloudy, warm, very windy",,yellow,12:42:00,12:06:00,12:25:00,10:59:00,10:32:00,11:34:00,14:44:00,14:27:00,13:58:00,15:01:00,15:27:00,13:29:00,Plots 6 and 4 were sheltered from the wind
+08/26/19,401 Trail,"calm, clear, warm","calm, clear, warm",yellow,12:25:00,12:44:00,10:41:00,11:10:00,11:39:00,12:05:00,14:13:00,13:52:00,16:17:00,15:23:00,14:37:00,15:43:00,
+08/27/19,Waterfall,"calm, clear, warm","calm, clear, warm",yellow,11:00:00,12:30:00,12:48:00,10:42:00,12:01:00,11:21:00,15:38:00,14:30:00,14:57:00,14:11:00,14:11:00,13:32:00,
+08/28/19,401 Trail,"calm, clear, warm","calm, clear, warm",yellow,12:21:00,10:49:00,11:34:00,11:15:00,11:58:00,12:51:00,14:18:00,16:22:00,15:27:00,15:57:00,13:43:00,14:41:00,
+08/29/19,Waterfall,"partly cloudy, calm, warm",,yellow,11:10:00,11:59:00,12:20:00,12:37:00,10:43:00,11:30:00,,,,,,,overcast and cool after 12:00
+08/30/19,401 Trail,"partly cloudy, calm, warm",,yellow,,,10:49:00,,11:00:00,11:14:00,,,,,,,"rain at 11:33 with more coming, ending early"
+08/31/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",yellow,12:21:00,10:23:00,11:57:00,11:01:00,10:44:00,11:29:00,14:31:00,14:13:00,14:53:00,13:25:00,13:53:00,13:02:00,
+09/02/19,401 Trail,"partly cloudy, calm, warm","partly cloudy, calm, warm",yellow,10:48:00,11:05:00,11:32:00,12:41:00,12:20:00,11:50:00,14:08:00,14:35:00,14:56:00,13:49:00,13:27:00,15:22:00,
+09/03/19,Waterfall,"partly cloudy, calm, warm","partly cloudy, calm, warm",yellow,12:18:00,10:51:00,12:43:00,11:10:00,11:58:00,11:27:00,14:31:00,15:12:00,14:49:00,13:28:00,14:12:00,13:52:00,
+09/04/19,401 Trail,"partly cloudy, calm, warm","mostly cloudy, calm, warm",yellow,11:40:00,12:17:00,12:35:00,11:04:00,10:47:00,11:54:00,14:44:00,14:58:00,13:38:00,14:14:00,13:57:00,15:15:00,
