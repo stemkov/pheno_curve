@@ -1,12 +1,6 @@
 ### running auxiliary analyses
 
-setwd("/home/michael/Documents/Grad School/Research Projects/abundance_curve")
-
-# bees <- fread("clean_data/clean_bee_data.csv", stringsAsFactors = FALSE)
-# flowers <- fread("clean_data/clean_flower_data.csv", stringsAsFactors = FALSE)
-# effort <- fread("clean_data/clean_sampling_effort.csv", stringsAsFactors = FALSE)
-# locations <- fread("clean_data/clean_plot_locations.csv", stringsAsFactors = FALSE)
-# temp <- fread("clean_data/temp_data.csv")
+setwd(wd_path)
 
 sites <- c("401 Trail", "Waterfall", "401 Trail", "Waterfall")
 years <- c(2019, 2019, 2021, 2021)
@@ -55,7 +49,6 @@ paste("Total Toffic at Trail 2019:",sum(all_data_list[[1]]$taraxacum))
 paste("Total hrub at Waterfall 2019:",sum(all_data_list[[2]]$taraxacum))
 paste("Total hrub at Trail 2021:",sum(all_data_list[[3]]$taraxacum))
 paste("Total hrub at Waterfall 2021:",sum(all_data_list[[4]]$taraxacum))
-
 
 # coarse look at phenology onset
 trail_2019[P != 0,][1, date]
@@ -110,8 +103,6 @@ hist(posterior[,,"B0[4]"], 100)
 abline(v=mean(posterior[,,"B0[4]"]), col="red", lwd=2)
 mean(posterior[,,"B0[4]"])
 quantile(posterior[,,"B0[4]"], c(0.025, 0.975))
-
-
 
 # emergence parameter estimates
 hist(posterior[,,"e[1]"], 100)
@@ -205,5 +196,182 @@ with(trail_2021, mean(abs(P_data - P[which(t %in% t_data)])))
 with(waterfall_2021, mean(abs(P_data - P[which(t %in% t_data)])))
 
 
+# flowering plant species richness
+flowers <- fread("clean_data/clean_flower_data.csv", stringsAsFactors = FALSE)
+length(unique(flowers[Site == "401 Trail" & year == 2019 , Species]))
+length(unique(flowers[Site == "401 Trail" & year == 2021 , Species]))
+length(unique(flowers[Site == "Waterfall" & year == 2019 , Species]))
+length(unique(flowers[Site == "Waterfall" & year == 2021 , Species]))
+
+# june 15 - July 15 temperatures
+mean(temp[site == "401 Trail" & date >= ymd("2019-06-15") & date <= ymd("2019-07-15"), temp_c], na.rm=T)
+mean(temp[site == "401 Trail" & date >= ymd("2021-06-15") & date <= ymd("2021-07-15"), temp_c], na.rm=T)
+mean(temp[site == "Waterfall" & date >= ymd("2019-06-15") & date <= ymd("2019-07-15"), temp_c], na.rm=T)
+mean(temp[site == "Waterfall" & date >= ymd("2021-06-15") & date <= ymd("2021-07-15"), temp_c], na.rm=T)
+
+# total bees - not just Hrub
+bees <- fread("clean_data/clean_bee_data.csv", stringsAsFactors = FALSE)
+bees[Site == "401 Trail" & year == 2019 & Field.ID %!in% c("Halictus rubicundus", "none"), .N]
+bees[Site == "401 Trail" & year == 2021 & Field.ID %!in% c("Halictus rubicundus", "none"), .N]
+bees[Site == "Waterfall" & year == 2019 & Field.ID %!in% c("Halictus rubicundus", "none"), .N]
+bees[Site == "Waterfall" & year == 2021 & Field.ID %!in% c("Halictus rubicundus", "none"), .N]
+
+unique(bees[Site == "401 Trail" & year == 2019 & Field.ID %!in% c("Halictus rubicundus", "none"), gsub(" .*", "", Field.ID)]) # 12
+unique(bees[Site == "401 Trail" & year == 2021 & Field.ID %!in% c("Halictus rubicundus", "none"), gsub(" .*", "", Field.ID)]) # 9
+unique(bees[Site == "Waterfall" & year == 2019 & Field.ID %!in% c("Halictus rubicundus", "none"), gsub(" .*", "", Field.ID)]) # 17
+unique(bees[Site == "Waterfall" & year == 2021 & Field.ID %!in% c("Halictus rubicundus", "none"), gsub(" .*", "", Field.ID)]) # 8
+
+
+### parameter summary table
+names(posterior[1,1,])
+
+posterior$parameters
+str(posterior)
+
+parameter_names <- names(posterior[1,1,])
+
+# Calculate summary statistics (e.g., mean, median, quantiles)
+summary_stats <- sapply(parameter_names, function(param) {
+  quantiles <- quantile(posterior[,,param], c(0.025, 0.5, 0.975))
+  names(quantiles) <- c("2.5%", "Median", "97.5%")
+  return(quantiles)
+})
+
+# Convert summary statistics to data frame
+summary_df <- as.data.frame(t(summary_stats))
+
+# Add parameter names as a column
+summary_df$Parameter <- parameter_names
+
+summary_to_output <- summary_df[c("onset[1]", "onset[2]",
+                                  "B0[1]", "B0[2]", "B0[3]", "B0[4]",
+                                  "e[1]", "e[2]",
+                                  "f[1]", "f[2]",
+                                  "m[1]", "m[2]",
+                                  "a_flr", "sigma"),
+                                c(4,2,1,3)]
+summary_to_output$Parameter <- c("h_2019", "h_2021",
+                                 "u_Trail,2019", "u_Trail,2021", "u_Waterfall,2019", "u_Waterfall,2021",
+                                 "a_2019", "a_2021",
+                                 "b_2019", "b_2021",
+                                 "m_2019", "m_2021",
+                                 "beta_F", "sigma")
+
+
+library(flextable)
+ft <- flextable(summary_to_output)
+save_as_html(ft, path = "summary_table.html")
+
+
+### showing how traditional phenophase estimation methods can give misleading results, Supplement 2
+
+library(mgcv)
+
+set.seed(0)
+
+t <- c(100:200)
+B0 <- 100
+e <- .15
+f <- 0.0001
+m <- 0.1
+t_onset <- 110
+
+test.method <- function(t, B0, e, f, m, t_onset, plot=F){
+  
+  sample_i <- round(seq(runif(1,1,20), 100, length.out=10))
+  sample_t <- t[sample_i]
+  
+  sim_data <- verhulst.wrapper(t=t, B0=B0, e=e, f=f, m=m, t_onset=t_onset, plot=plot)
+  P_obs <- round(sim_data$P[sample_i] + rnorm(10, 0, 2))
+  
+  first_est <- t[sample_i[which(P_obs > 0)[1]]]
+  quant_est <- quantile(rep(sample_t, time = pmax(P_obs,0)),.05)
+  gam_model <- gam(pmax(P_obs,0) ~ s(sample_t), family = nb())
+  gam_pred <- predict(gam_model, newdata = data.frame(sample_t=c(50:250)))
+  gam_est_0 <- c(50:250)[which(gam_pred >= 1)[1]]
+  gam_est_05 <- c(50:250)[which(gam_pred >= max(gam_pred)*0.05)[1]]
+  
+  return(c(t_onset = t_onset, first_est = first_est, quant_est = as.numeric(quant_est), gam_est_0 = gam_est_0, gam_est_05 = gam_est_05))
+}
+
+if(FALSE){
+  test.method(t, B0, e=1, f, m, t_onset, plot=T) # demonstrate single run
+}
+
+t_onsets <- seq(100,150)
+es <- runif(length(t_onsets), .03, 1)
+tests <- mapply(test.method, t_onset = t_onsets, e = es, MoreArgs = list(t = t, B0 = B0, f = f, m = m))
+tests_df <- data.table(t(tests))
+
+library(RColorBrewer)
+pal <- brewer.pal(5,"Dark2")
+
+#points(gam_est_05 ~ t_onset, data=tests_df, pch=20, col = adjustcolor(pal[4], 0.5))
+#abline(lm(gam_est_0 ~ t_onset, data=tests_df), lwd=1, col=pal[4])
+
+model_for_test <- stan_model(file='scripts/model_for_testing.stan')
+
+test.verhulst <- function(t, B0, e, f, m, t_onset){
+  sample_i <- round(seq(runif(1,1,20), 100, length.out=10))
+  sample_t <- t[sample_i]
+  sim_data <- verhulst.wrapper(t=t, B0=B0, e=e, f=f, m=m, t_onset=t_onset)
+  P_obs <- round(sim_data$P[sample_i] + rnorm(10, 0, 2))
+  test_data <- list(P = P_obs, time = sample_t, n = length(P_obs))
+  
+  test_fit <- sampling(model_for_test, test_data, iter=4000, chains=4, cores=4, control=list(adapt_delta=0.95)) 
+  verhulst_est <- summary(test_fit)$summary[1,1]
+  return(verhulst_est)
+}
+
+#subsample_datasets <- round(seq(1,50, length.out=10)) # running verhult test on just 10 simulated datasets rather than 50
+subsample_datasets <- c(1:51)
+verhulst_tests <- mapply(test.verhulst, t_onset = t_onsets[subsample_datasets], e = es[subsample_datasets], MoreArgs = list(t = t, B0 = B0, f = f, m = m))
+verhulst_tests_df <- data.table(t(verhulst_tests))
+
+
+png("methods_test_50.png", width=700, height=600)
+#svg("methods_test_50.svg", width=7, height=6) # if a vector graphic is desired
+
+  plot(NA, xlim=range(t_onsets), ylim=range(t_onsets), xlab="Actual onset (DOY)", ylab="Estimated onset (DOY)")
+  abline(0, 1, lwd=3, col="black", lty=2)
+  
+  points(first_est ~ t_onset, data=tests_df, pch=20, col = adjustcolor(pal[1], 0.5))
+  abline(lm(first_est ~ t_onset, data=tests_df), lwd=2, col=pal[1])
+  
+  points(quant_est ~ t_onset, data=tests_df, pch=20, col = adjustcolor(pal[2], 0.5))
+  abline(lm(quant_est ~ t_onset, data=tests_df), lwd=2, col=pal[2])
+  
+  points(gam_est_05 ~ t_onset, data=tests_df, pch=20, col = adjustcolor(pal[3], 0.5))
+  abline(lm(gam_est_05 ~ t_onset, data=tests_df), lwd=2, col=pal[3])
+  
+  points(verhulst_tests ~ t_onsets[subsample_datasets], data=tests_df, pch=20, col = adjustcolor(pal[4], 0.5))
+  abline(lm(verhulst_tests ~ t_onsets[subsample_datasets], data=tests_df), lwd=2, col=pal[4])
+
+  legend("topleft", inset=0.05,
+         legend=c("First observation", "Empirical quantile", "Generalized Additive Model", "Bayesian phenological curve model", "One-to-one line"),
+         col=c(pal[1:4],"black"), lwd=2, lty=c(1,1,1,1,2), cex=0.9)
+  
+dev.off()
+
+all_tests <- list(tests_df = tests_df, t_onsets = t_onsets, es = es, subsample_datasets = subsample_datasets, verhulst_tests = verhulst_tests)
+
+saveRDS(all_tests, "all_tests.RDS")
+# all_tests <- readRDS("all_tests.RDS") # run this and not the line above to save time
+tests_df <- all_tests$tests_df
+t_onsets <- all_tests$t_onsets
+es <- all_tests$es
+subsample_datasets <- all_tests$subsample_datasets
+verhulst_tests <- all_tests$verhulst_tests
+
+summary(lm((t_onsets - tests_df$first_est) ~ 1))
+summary(lm((t_onsets - tests_df$quant_est) ~ 1))
+summary(lm((t_onsets - tests_df$gam_est_05) ~ 1))
+summary(lm((t_onsets - verhulst_tests) ~ 1))
+
+library(car)
+linearHypothesis(lm(first_est ~ t_onset, data=tests_df), "t_onset = 1")
+linearHypothesis(lm(quant_est ~ t_onset, data=tests_df), "t_onset = 1")
+linearHypothesis(lm(gam_est_05 ~ t_onset, data=tests_df), "t_onset = 1")
+linearHypothesis(lm(verhulst_tests ~ t_onset, data=tests_df), "t_onset = 1")
 
 

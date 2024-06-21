@@ -1,3 +1,5 @@
+`%!in%` <- Negate(`%in%`)
+
 ### simulation functions
 
 verhulst.func <- function(t_given, B0, e, f, m, t_onset, get="P"){
@@ -222,6 +224,7 @@ assemble.data <- function(site, year, time_shift=NA, plot=F){
   }
   
   data$taraxacum <- get.flower.timeseries("Taraxacum officinale", site, year)$P
+  # if soil and air temperatures are desired:
   # data$air <- get.temp(site, "air", year)
   # data$soil <- get.temp(site, "soil", year)
   data$site <- site; data$year <- year; data$time_shift <- time_shift

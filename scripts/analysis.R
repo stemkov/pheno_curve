@@ -2,7 +2,7 @@ library(rstan)
 library(bayesplot)
 library(plotrix)
 
-setwd("/home/michael/Documents/Grad School/Research Projects/abundance_curve/for_submission")
+setwd(wd_path)
 
 bees <- read.csv("clean_data/clean_bee_data.csv", stringsAsFactors = FALSE)
 flowers <- read.csv("clean_data/clean_flower_data.csv", stringsAsFactors = FALSE)
@@ -12,8 +12,7 @@ locations <- read.csv("clean_data/clean_plot_locations.csv", stringsAsFactors = 
 ### assembling full dataset to analyze
 sites <- c("401 Trail", "Waterfall", "401 Trail", "Waterfall")
 years <- c(2019, 2019, 2021, 2021)
-# sites <- c("401 Trail", "401 Trail")
-# years <- c(2019, 2021)
+
 all_data_list <- mapply(assemble.data, sites, years, SIMPLIFY = F, USE.NAMES = F)
 all_data <- rbindlist(all_data_list)
 all_data[, site_year_label := as.factor(paste(site, year, sep="_"))]
@@ -29,52 +28,52 @@ data <- list(P = Ps, time = times, flowers = flowers, n = length(Ps), ts = ts, n
 
 ### fitting model
 
-model <- stan_model(file='/home/michael/Documents/Grad School/Research Projects/abundance_curve/scripts/model.stan')
+model <- stan_model(file='scripts/model.stan')
 fit <- sampling(model, data, iter=10000, chains=4, cores=4, control=list(adapt_delta=0.95)) 
 saveRDS(fit, "scripts/model_fit.RDS")
-# fit <- readRDS("scripts/model_fit.RDS") # read in previous fit if you want to skip fitting, which takes a while
-
-### Just ran the task above.
-# maybe try centering flower data... but I guess that would give me negative predictions unless I also have some intercept... not sure how to interpret the intercept
-
+# read in previous fit if you want to skip fitting, which takes a while
+# fit <- readRDS("scripts/model_fit.RDS") 
 summary(fit)$summary
 posterior <- extract(fit, permute=F)
 
 ### diagnostics
 
+library(RColorBrewer)
+pal <- brewer.pal(4, "Dark2")
+
 png("figures/trace_B0.png", width=700, height=700)
   par(mfrow=c(2,2))
-  matplot(posterior[,,"B0[1]"], type="l", lty=1)
-  matplot(posterior[,,"B0[2]"], type="l", lty=1)
-  matplot(posterior[,,"B0[3]"], type="l", lty=1)
-  matplot(posterior[,,"B0[4]"], type="l", lty=1)
+  matplot(posterior[,,"B0[1]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"B0[2]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"B0[3]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"B0[4]"], type="l", lty=1, col=pal)
 dev.off()
 
 png("figures/trace_e_f_m.png", width=600, height=900)
  par(mfrow=c(3,2))
-  matplot(posterior[,,"e[1]"], type="l", lty=1)
-  matplot(posterior[,,"e[2]"], type="l", lty=1)
-  matplot(posterior[,,"f[1]"], type="l", lty=1)
-  matplot(posterior[,,"f[2]"], type="l", lty=1)
-  matplot(posterior[,,"m[1]"], type="l", lty=1)
-  matplot(posterior[,,"m[2]"], type="l", lty=1)
+  matplot(posterior[,,"e[1]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"e[2]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"f[1]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"f[2]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"m[1]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"m[2]"], type="l", lty=1, col=pal)
 dev.off()
 
 png("figures/trace_onset.png", width=400, height=700)
   par(mfrow=c(2,1))
-  matplot(posterior[,,"onset[1]"], type="l", lty=1)
-  matplot(posterior[,,"onset[2]"], type="l", lty=1)
+  matplot(posterior[,,"onset[1]"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"onset[2]"], type="l", lty=1, col=pal)
 dev.off()
 
 png("figures/trace_flower_sigma.png", width=400, height=700)
   par(mfrow=c(2,1))
-  matplot(posterior[,,"a_flr"], type="l", lty=1)
-  matplot(posterior[,,"sigma"], type="l", lty=1)
+  matplot(posterior[,,"a_flr"], type="l", lty=1, col=pal)
+  matplot(posterior[,,"sigma"], type="l", lty=1, col=pal)
 dev.off()
 
-matplot(posterior[,,"lp__"], type="l", lty=1)
-matplot(posterior[,,"onset_mu"], type="l", lty=1)
-matplot(posterior[,,"onset_sigma"], type="l", lty=1)
+matplot(posterior[,,"lp__"], type="l", lty=1, col=pal)
+matplot(posterior[,,"onset_mu"], type="l", lty=1, col=pal)
+matplot(posterior[,,"onset_sigma"], type="l", lty=1, col=pal)
 
 
 ts1_data <- all_data[site_year==1,]
@@ -127,7 +126,6 @@ hist(rnorm(20000, 0, 5), 100, border="white", col=adjustcolor("red", alpha.f = 0
 hist(posterior[,,"a_flr"], 1, add=T, border="white", col=adjustcolor("blue", alpha.f = 0.5))
 hist(rlnorm(20000, 0, 1), 100, border="white", col=adjustcolor("red", alpha.f = 0.5), main="sigma")
 hist(posterior[,,"sigma"], 2, add=T, border="white", col=adjustcolor("blue", alpha.f = 0.5))
-
 
 
 par(mfrow=c(2,2))
@@ -452,6 +450,15 @@ png("figures/fig2.png", width=8, height=5, units="in", res=175)
 
 dev.off()
 
+
+
+### all pairwise parameter correlations
+combined_pars <- apply(posterior[,,c("onset[1]", "B0[1]", "e[1]", "f[1]", "m[1]", "a_flr", "sigma")]
+,3,c)
+
+png("par_corrs.png", width=800, height=900)
+  pairs(combined_pars[sample(c(1:nrow(combined_pars)), 5000),], upper.panel = NULL) # 5000 draws from posterior across all chains for faster plotting
+dev.off()
 
 
 ### parameter scans to show that the curve is flexible

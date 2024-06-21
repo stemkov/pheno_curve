@@ -1,11 +1,12 @@
-
 library(lubridate)
 library(mgsub)
 library(data.table)
 
 `%!in%` <- Negate(`%in%`)
 
-setwd("/home/michael/Documents/Grad School/Research Projects/abundance_curve/for_submission")
+wd_path <- "" # Enter your working directory address here
+
+setwd(wd_path)
 
 ### loading in raw data
 
@@ -24,7 +25,7 @@ bees <- rbind(bees, bees_2021)
 
 effort <- rbind(effort, effort_2021[,-c(18:35)]) # removing coords from 2021 data to combine
 
-# flowers needs a bit of work because I switched to counting all flowers in 2021 rather than number of plants and # flowers on 10 plants
+# reformatting to account for switch in methods: counting all flowers in 2021 rather than number of plants and # flowers on 10 plants
 
 flowers_2021$Number.of.plants <- 10
 flowers_2021$Number.of.flowers.1 <- flowers_2021$Number.of.flowers/10
@@ -41,36 +42,6 @@ flowers_2021$Number.of.flowers.10 <- flowers_2021$Number.of.flowers/10
 flowers$X <- NULL; flowers$X.1 <- NULL
 flowers_2021$Number.of.flowers <- NULL
 flowers <- rbind(flowers, flowers_2021)
-
-### checking data
-
-# checks to run to make sure I entered data correctly:
-
-# bee data
-# spelling of bee names
-# whether date and site exist in sampling effort
-# sex correct for solitaries, and caste for bumbles
-
-sort(unique(bees$Field.ID))
-table(bees$Field.ID)
-
-sort(unique(bees$Caught.on))
-
-# flower data
-# spelling of flower names
-# whether date and site exist in sampling effort
-# NAs for "out of quadrat" and "out of transect" species
-# plots are 1-6
-# quadrats are A-D
-# number of plants and number flr counts matches
-# there's plant data for every sampled transect
-
-sort(unique(flowers$Species))
-table(flowers$Species)
-
-# sampling effort/location
-# effort and plot location data matches
-# AM is before PM
 
 ### cleaning data
 
@@ -93,10 +64,6 @@ unique_id <- paste("2019",1:nrow(pinned),sep="_")
 
 clean_bees$unique_id <- ""
 clean_bees$unique_id[which(clean_bees$Collected. == "Y")] <- unique_id
-
-ordered_dets <- dets[order(dets$id),]
-clean_bees[which(clean_bees$unique_id %in% dets$unique_id),"Lab.ID"] <- ordered_dets$determination
-clean_bees[which(clean_bees$unique_id %in% dets$unique_id),"Lab.sex"] <- toupper(ordered_dets$sex)
 
 clean_bees$year <- year(clean_bees$Date)
 head(clean_bees)

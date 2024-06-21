@@ -140,8 +140,7 @@ model{
 	onset_sigma ~ lognormal(1,1);
 	onset ~ normal(onset_mu, onset_sigma);
 
-	// hyperparameters for rates...
-	// not sure if this is right with the reparametrization
+	// hyperparameters for rates
 	e_tilde_mu ~ normal(0,1);
 	e_tilde_sigma ~ lognormal(0,1);
 	f_tilde_mu ~ normal(0,1);
